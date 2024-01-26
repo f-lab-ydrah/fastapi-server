@@ -1,17 +1,21 @@
 # fastapi-server
 
 # pyenv 설치 방법
-brew install pyenv
-pyenv install --list
+```brew install pyenv```
+```pyenv install --list```
 
 ModuleNotFoundError: No module named '_lzma'
 WARNING: The Python lzma extension was not compiled. Missing the lzma lib?
-brew install readline xz
+
+```brew install readline xz```
 
 # pyenv로 파이썬 버전 설치
-pyenv install 3.12.0
-pyenv global 3.12.0
+```pyenv install 3.12.0```
 
+# pyenv로 python 버전 글로벌 설정
+```pyenv global 3.12.0```
+
+```
 pyenv shell 3.12.0
 pyenv: shell integration not enabled. Run `pyenv init' for instructions.
 pyenv init
@@ -25,23 +29,24 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 # Restart your shell for the changes to take effect.
+```
 
-# 해당 폴더 파이썬 버전 설정
-pyenv local 3.12.0
+# pyenv로 해당 폴더 파이썬 버전 설정
+```pyenv local 3.12.0```
 
 # pyenv 실행
-pyenv shell 3.12.0
+```pyenv shell 3.12.0```
 
 # pyenv 설치된 파이썬 버전 확인
-pyenv versions
+```pyenv versions```
 
 # 파이썬 버전 확인
-python --version
+```python --version```
 
 ---
 
 # Poetry 설치 방법
-curl -sSL https://install.python-poetry.org | python3 -
+```curl -sSL https://install.python-poetry.org | python3 -```
 
 zsh: command not found: poetry
 open ~/.zshrc
@@ -96,10 +101,10 @@ Do you confirm generation? (yes/no) [yes] yes
 ---
 
 # poetry 가상환경 실행
-poetry shell
+```poetry shell```
 
 # poetry에서 fastapi 패키지 설치
-poetry add fastapi
+```poetry add fastapi```
 
 # poetry 종료
-exit
+```exit```
