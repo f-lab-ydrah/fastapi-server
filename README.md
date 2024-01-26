@@ -2,6 +2,7 @@
 
 # pyenv 설치 방법
 ```brew install pyenv```
+
 ```pyenv install --list```
 
 ModuleNotFoundError: No module named '_lzma'
