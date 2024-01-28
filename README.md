@@ -109,3 +109,14 @@ Do you confirm generation? (yes/no) [yes] yes
 
 # poetry 종료
 ```exit```
+
+# fastAPI 서버 실행
+```uvicorn main:app --reload```
+
+# fastAPI 서버 실행 시, uvicorn 오류 날 때
+zsh: command not found: uvicorn
+
+```pip install uvicorn```
+
+# fastAPI 서버 종료
+ctrl + c
