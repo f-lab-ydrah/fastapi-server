@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+import datetime
 
 from domain.post import post_schema
 
@@ -14,7 +15,6 @@ def create_post(data: post_schema.Item):
     """
     게시글 생성
     """
-    # DB에 데이터 추가
     return data
 
 @router.get("/posts")
@@ -22,7 +22,6 @@ def get_posts():
     """
     게시글 목록 조회
     """
-    # DB에서 데이터 가져오기
     post_id = 1
     author = 'author1'
     title = 'title1'
@@ -41,7 +40,7 @@ def get_post(post_id: int):
     author = 'author1'
     title = 'title1'
     content = 'content1'
-    created_at = '2024-01-01'
+    created_at = datetime.datetime
     return {"code" : "200", 
             "message" : "성공", 
             "data" : {"post_id": post_id, 
