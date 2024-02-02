@@ -10,6 +10,8 @@ router = APIRouter(
 
 store_data = {}
 
+store_data = {}
+
 @router.post("/post")
 def create_post(data: post_schema.Item):
     """
@@ -31,6 +33,7 @@ def get_posts():
             "message" : "성공", 
             "data" : [{"post_id": post_id, "author": author, "title": title, "content": content, "created_at": created_at}]}
 
+@router.get("/posts/{post_id}")
 @router.get("/posts/{post_id}")
 def get_post(post_id: int):
     """
