@@ -7,14 +7,15 @@ router = APIRouter(
     tags=["post"]
 )
 
+store_data = {}
+
 @router.post("/post")
-def create_post(post_id: int, author: str, title: str, content: str, created_at: str):
+def create_post(data: post_schema.Item):
     """
     게시글 생성
     """
     # DB에 데이터 추가
-    return {"code" : "200", 
-            "message" : "성공"}
+    return data
 
 @router.get("/posts")
 def get_posts():
@@ -31,7 +32,7 @@ def get_posts():
             "message" : "성공", 
             "data" : [{"post_id": post_id, "author": author, "title": title, "content": content, "created_at": created_at}]}
 
-@router.get("/{post_id}")
+@router.get("/posts/{post_id}")
 def get_post(post_id: int):
     """
     게시글 조회
