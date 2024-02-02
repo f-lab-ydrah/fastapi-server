@@ -10,8 +10,6 @@ router = APIRouter(
 
 store_data = {}
 
-store_data = {}
-
 @router.post("/post")
 def create_post(data: post_schema.Item):
     """
