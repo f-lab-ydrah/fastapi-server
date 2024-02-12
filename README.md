@@ -1,20 +1,7 @@
 # fastapi-server
 
 ## 다이어그램
-```mermaid
-block-beta
-    columns 3
-    up1<["API 실행 응답"]>(up) person1((("API 사용자"))) down1<["API 실행 요청"]>(down)
-
-    block:e:3
-        columns 1
-        api["[API]\nFastAPI\n게시글 생성(POST) / 조회(GET) / 수정(PUT) / 삭제(DELETE)"]
-        space
-        db[("[DB]\nSQLite3")] 
-        api --> db
-        db --"데이터 요청\n 데이터 응답"--> api
-    end
-```
+[![](https://mermaid.ink/img/pako:eNptUlFLwlAU_iuX-7SBUuLbCKHQIhAytCevD3fbTYfubmx3SYgQ5kOhQUFFiIZBL0GCSUG_Sa__oTOnaNSezvm-c77vO9sa2HBMhjWs1xyjGteZoIQjeAynFtjcR8moDdzETpHg3dwhkp3X-eM1koO7WeeL4FJKCVwVuczzHZ5QFGU51XqXvTf5fEuwqqrIdOr8j0LvXk5GC4WQVgmPvBZRNKYtrTfTJNYQdS2QK4JeiRC-T30BJVTTSVd2-tPvCyQvB7L9oeSO8gUVbSH5Mp73uspBJuqunuTwQcmdRF1rJId9JZ3JZgoZFSKtfXyXGmzdmnoRLiym90LX_HHWEiwJJ5bQr2QoHk_B6OYaQATPbsZy8Dlvj1fHw8QGtnyl4TKIRNuMmziGbebZ1DLhQzVCmGBRYTYjWIOSs0B4tEZwLKJOa07dqFBPhHQjUiHYo7yah1ssXg7x5HZsxXD4A_5njMA7W5ro1Ld8gkOmSXgTItFAOPlzbmBNeAGL4cA1qWBpi5Y9akdg8wd3Qtep?type=png)](https://mermaid-js.github.io/mermaid-live-editor/edit#pako:eNptUlFLwlAU_iuX-7SBUuLbCKHQIhAytCevD3fbTYfubmx3SYgQ5kOhQUFFiIZBL0GCSUG_Sa__oTOnaNSezvm-c77vO9sa2HBMhjWs1xyjGteZoIQjeAynFtjcR8moDdzETpHg3dwhkp3X-eM1koO7WeeL4FJKCVwVuczzHZ5QFGU51XqXvTf5fEuwqqrIdOr8j0LvXk5GC4WQVgmPvBZRNKYtrTfTJNYQdS2QK4JeiRC-T30BJVTTSVd2-tPvCyQvB7L9oeSO8gUVbSH5Mp73uspBJuqunuTwQcmdRF1rJId9JZ3JZgoZFSKtfXyXGmzdmnoRLiym90LX_HHWEiwJJ5bQr2QoHk_B6OYaQATPbsZy8Dlvj1fHw8QGtnyl4TKIRNuMmziGbebZ1DLhQzVCmGBRYTYjWIOSs0B4tEZwLKJOa07dqFBPhHQjUiHYo7yah1ssXg7x5HZsxXD4A_5njMA7W5ro1Ld8gkOmSXgTItFAOPlzbmBNeAGL4cA1qWBpi5Y9akdg8wd3Qtep)
 
 ## 버전 목록
 - pyenv : 2.3.35
