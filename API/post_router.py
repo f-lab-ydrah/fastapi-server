@@ -2,7 +2,7 @@ from fastapi import APIRouter, status
 from fastapi.responses import JSONResponse
 import datetime
 
-from domain import post_schema
+from domain.post_schema import Item, RequestBody
 
 router = APIRouter(
     prefix="/api",
@@ -12,7 +12,7 @@ router = APIRouter(
 store_data = []
 
 @router.post("/post", response_class=JSONResponse)
-def create_post(data: post_schema.RequestBody):
+def create_post(data: RequestBody):
     """
     게시글 생성
     """
@@ -21,12 +21,10 @@ def create_post(data: post_schema.RequestBody):
         post_id = 1
         content = {"post_id" : post_id, "author" : data.author, "title" : data.title , "content" : data.content, "created_at" : str(datetime.datetime.now())}
         store_data.append(content)
-        print(store_data)
     else:
         post_id = len(store_data) + 1
         content = {"post_id" : post_id, "author" : data.author, "title" : data.title , "content" : data.content, "created_at" : str(datetime.datetime.now())}
         store_data.append(content)
-        print(store_data)
 
     return JSONResponse(
         status_code=status.HTTP_201_CREATED,
@@ -39,7 +37,7 @@ def get_posts():
     게시글 목록 조회
     """
     return JSONResponse(
-        status_code=200,
+        status_code=status.HTTP_200_OK,
         content=store_data
     )
 
@@ -48,30 +46,61 @@ def get_post(post_id: int):
     """
     게시글 조회
     """
-    data = store_data[post_id]
-    return JSONResponse(
-        status_code=200,
-        content=data
-    )
+    global store_data
+    for post in store_data:
+        if post.get("post_id") == post_id:
+            data = post
+            return JSONResponse(
+                status_code=status.HTTP_201_CREATED,
+                content=data
+            )
+        else:
+            data = {}
+            return JSONResponse(
+                status_code=status.HTTP_404_NOT_FOUND,
+                content=data
+            )
 
 @router.put("/{post_id}", response_class=JSONResponse)
-def edit_post(data: post_schema.Item):
+def edit_post(data: Item):
     """
     게시글 수정
     """
-    global store_data 
-    store_data = data
-    return JSONResponse(
-        status_code=200,
-        content=store_data
-    )
+    global store_data
+    for post in store_data:
+        if post.get("post_id") == data.post_id:
+            post["author"] = data.author
+            post["title"] = data.title
+            post["content"] = data.content
+            data = {}
+            return JSONResponse(
+                status_code=status.HTTP_201_CREATED,
+                content=data
+            )
+        else:
+            data = {}
+            return JSONResponse(
+                status_code=status.HTTP_404_NOT_FOUND,
+                content=data
+            )
 
 @router.delete("/{post_id}", response_class=JSONResponse)
 def delete_post(post_id: int):
     """
     게시글 삭제
     """
-    return JSONResponse(
-        status_code=200,
-        content=post_id
-    )
+    global store_data
+    for post in store_data:
+        if post.get("post_id") == post_id:
+            store_data.pop(store_data.index(post))
+            message = f"게시글 번호 {post_id} 삭제 성공"
+            return JSONResponse(
+                status_code=status.HTTP_200_OK,
+                content={"messaage" : message}
+            )
+        else:
+            data = {}
+            return JSONResponse(
+                status_code=status.HTTP_404_NOT_FOUND,
+                content=data
+            )
