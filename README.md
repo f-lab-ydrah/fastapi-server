@@ -1,7 +1,35 @@
 # fastapi-server
 
 ## 다이어그램
-![mermaid-diagram-2024-02-12-221026](https://github.com/f-lab-edu/fastapi-server/assets/80112242/e5e1464d-af7e-4740-a7b0-5dd8c2488105)
+
+```mermaid
+flowchart LR
+    subgraph "API"
+        direction TB
+        router_a["router_a.py"]
+        router_b["router_b.py"]
+        router_c["router_c.py"]
+        router_a -.- router_b -.- router_c
+    end
+    subgraph "Model"
+        direction TB
+        model_a["model_a.py"]
+        model_b["model_b.py"]
+        model_c["model_c.py"]
+        model_a -.- model_b -.- model_c
+    end
+    subgraph "Repository"
+        direction TB
+        repo_a["repository_a.py"]
+        repo_b["repository_b.py"]
+        repo_a -.- repo_b
+    end
+    main.py --> API
+    API --> Model
+    API --> Repository
+    Repository --> Model
+
+```
 
 ## 버전 목록
 - pyenv : 2.3.35
