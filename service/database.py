@@ -5,13 +5,7 @@ conn = sqlite3.connect("posts.db")
 cur = conn.cursor()
 
 cur.execute("""
-            CREATE TABLE posts (
-                post_id integer primary key autoincrement,
-                author text,
-                title text,
-                content text,
-                created_at sysdate
-                )
+            SELECT * FROM posts
             """)
 
 rows = cur.fetchall()
